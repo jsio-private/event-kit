@@ -28,6 +28,7 @@ export class Emitter {
   isDisposed(): boolean
   dispose()
 }
+export function disposableEvent (target, eventName, callback)
 ```
 
 #### Introduction
@@ -50,6 +51,10 @@ from `.on`.
 
 CompositeDisposables are containers of disposables. They implement the disposable interface themselves, so when we do
 `compositedisposable.dispose()` they iterate over all of their disposables and dispose them as well.
+
+##### disposableEvent
+
+DisposableEvent normalizes event registration and disposal. We have often dealt with situations where there are inconsistent ways to add or remove event listeners in different APIs, DisposableEvent normalizes them all and gives authors a beautiful API.
 
 ##### Named Events
 
