@@ -5,8 +5,7 @@
   "main": "lib/main.js",
   "scripts": {
     "test": "apm test",
-    "compile": "ucompiler go",
-    "postinstall": "npm run compile"
+    "compile": "ucompiler go"
   },
   "repository": {
     "type": "git",
