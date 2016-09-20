@@ -1,10 +1,6 @@
-'use babel'
+import Disposable from './disposable'
 
-/* @flow */
-
-import {Disposable} from './disposable'
-
-export class Emitter {
+export default class Emitter {
   disposed: boolean;
   handlers: Object;
 

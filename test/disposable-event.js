@@ -1,4 +1,4 @@
-import assert from 'assert'
+import { assert } from 'chai'
 import EventEmitter from 'events'
 import { jsdom } from 'jsdom'
 
