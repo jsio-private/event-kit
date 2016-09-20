@@ -1,41 +1,42 @@
-'use babel'
+import type Disposable from './disposable'
 
-/* @flow */
-
-import type {Disposable} from './disposable'
-
-export class CompositeDisposable {
+export default class CompositeDisposable {
   disposed: boolean;
   disposables: Set<Disposable>;
 
-  constructor(){
+  constructor(...args: Disposable[]){
     this.disposed = false
-    this.disposables = new Set(arguments)
+    this.disposables = new Set(args)
   }
-  add(){
+
+  add(...args: Disposable[]){
     if (!this.disposed) {
-      let length = arguments.length
+      let length = args.length
       for (let i = 0; i < length; ++i) {
-        this.disposables.add(arguments[i])
+        this.disposables.add(args[i])
       }
     }
   }
-  remove(){
+
+  remove(...args: Disposable[]){
     if (!this.disposed) {
-      let length = arguments.length
+      let length = args.length
       for (let i = 0; i < length; ++i) {
-        this.disposables.delete(arguments[i])
+        this.disposables.delete(args[i])
       }
     }
   }
+
   clear(){
     if (!this.disposed) {
       this.disposables.clear()
     }
   }
+
   isDisposed(): boolean {
     return this.disposed
   }
+
   dispose(){
     if (!this.disposed) {
       for (const item of this.disposables) {
