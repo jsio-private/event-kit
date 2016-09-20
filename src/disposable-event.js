@@ -1,10 +1,8 @@
-'use babel'
+import Disposable from './disposable'
 
-/* @flow */
-
-import {Disposable} from './disposable'
-
-function disposableEvent(target: Object, eventName: string, callback: Function): Disposable {
+export default function disposableEvent(
+  target: Object, eventName: string, callback: Function
+): Disposable {
   if (target.on) {
     target.on(eventName, callback)
   } else if (target.addListener) {
@@ -26,5 +24,3 @@ function disposableEvent(target: Object, eventName: string, callback: Function):
     }
   })
 }
-
-export { disposableEvent };

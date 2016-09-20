@@ -1,8 +1,4 @@
-'use babel'
-
-/* @flow */
-
-export class Disposable{
+export default class Disposable {
   disposed: boolean;
   callback: ?(() => void);
 
