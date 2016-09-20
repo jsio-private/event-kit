@@ -8,6 +8,7 @@ export default class Emitter {
     this.disposed = false
     this.handlers = {}
   }
+
   on(eventName: string, handler: Function): Disposable {
     if (this.disposed) {
       throw new Error('Emitter has been disposed')
@@ -24,14 +25,17 @@ export default class Emitter {
       this.off(eventName, handler)
     })
   }
+
   off(eventName: string, handler: Function){
     if (!this.disposed && this.handlers[eventName]) {
       this.handlers[eventName].delete(handler)
     }
   }
+
   clear() {
     this.handlers = {}
   }
+
   emit(eventName: string, ...params: any) {
     if (this.disposed || typeof this.handlers[eventName] === 'undefined') {
       return
@@ -57,9 +61,11 @@ export default class Emitter {
     }
     return Promise.all(promises)
   }
+
   isDisposed(): boolean {
     return this.disposed
   }
+
   dispose(){
     this.disposed = true
     this.handlers = {}

@@ -4,11 +4,12 @@ export default class CompositeDisposable {
   disposed: boolean;
   disposables: Set<Disposable>;
 
-  constructor(...args){
+  constructor(...args: Disposable[]){
     this.disposed = false
     this.disposables = new Set(args)
   }
-  add(...args){
+
+  add(...args: Disposable[]){
     if (!this.disposed) {
       let length = args.length
       for (let i = 0; i < length; ++i) {
@@ -16,7 +17,8 @@ export default class CompositeDisposable {
       }
     }
   }
-  remove(...args){
+
+  remove(...args: Disposable[]){
     if (!this.disposed) {
       let length = args.length
       for (let i = 0; i < length; ++i) {
@@ -24,14 +26,17 @@ export default class CompositeDisposable {
       }
     }
   }
+
   clear(){
     if (!this.disposed) {
       this.disposables.clear()
     }
   }
+
   isDisposed(): boolean {
     return this.disposed
   }
+
   dispose(){
     if (!this.disposed) {
       for (const item of this.disposables) {
